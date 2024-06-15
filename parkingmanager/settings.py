@@ -16,7 +16,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-ks^dwr^_k11ag1
 # DEBUG = True
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = ['anita1k-django-parking-e41a.twc1.net']
+ALLOWED_HOSTS = ["anita1k-django-parking-e41a.twc1.net"]
 
 
 # Application definition
