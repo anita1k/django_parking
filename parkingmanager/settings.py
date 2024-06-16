@@ -85,10 +85,10 @@ WSGI_APPLICATION = 'parkingmanager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'parking_db',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
-        'HOST': '127.0.0.1',
+        'NAME': 'default_db',
+        'USER': 'gen_user',
+        'PASSWORD': 'o%7Bj%2C17%26J%3C%3FgyQn',
+        'HOST': '192.168.0.4',
         'PORT': '5432',
     }
 }
@@ -135,9 +135,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
-DATABASE_URL = os.environ.get('DATABASE_URL', 'postgres://admin:admin@127.0.0.1:5432/parking_db')
+DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://gen_user:o%7Bj%2C17%26J%3C%3FgyQn@192.168.0.4:5432/default_db')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
