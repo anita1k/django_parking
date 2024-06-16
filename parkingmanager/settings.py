@@ -16,7 +16,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-ks^dwr^_k11ag1
 # DEBUG = True
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = ["anita1k-django-parking-e41a.twc1.net"]
+ALLOWED_HOSTS = ["anita1k-django-parking-e41a.twc1.net, 5.23.53.128"]
 
 
 # Application definition
@@ -87,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'default_db',
         'USER': 'gen_user',
-        'PASSWORD': '-%7BVvm59dOsZDT',
+        'PASSWORD': '-%7BVvm59dOsZDT%5C',
         'HOST': '5.23.53.128',
         'PORT': '5432',
     }
@@ -136,7 +136,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 import dj_database_url
-DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://gen_user:-%7BVvm59dOsZDT@5.23.53.128:5432/default_db')
+DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://gen_user:-%7BVvm59dOsZDT%5C@5.23.53.128:5432/default_db')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
