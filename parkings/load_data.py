@@ -7,9 +7,9 @@ def parkingplace():
 
     for item in data:
         service = ParkingPlace()
-        service._id = item['_id']
-        service.coordinates = item['coordinates']
-        service.floor = item['floor']
+        service._id = item.get('_id')
+        service.coordinates = item.get('coordinates')
+        service.floor = item.get('floor')
         service.save()
 
 
