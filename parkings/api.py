@@ -2,7 +2,6 @@ from .models import ParkingPlace, Shop, Facility, Busy, Path
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, permissions
 from .serializers import *
-from rest_framework.response import Response
 
 
 class ParkingPlaceViewSet(viewsets.ModelViewSet):
