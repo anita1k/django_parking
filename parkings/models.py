@@ -4,7 +4,7 @@ from django.contrib.postgres.fields import ArrayField
 
 
 class ParkingPlace(models.Model):
-    _id = models.CharField(primary_key=True)
+    _id = models.CharField(max_length=100, primary_key=True)
     coordinates = ArrayField(ArrayField(models.FloatField()), blank=False)
     floor = models.IntegerField(blank=False)
     
@@ -13,7 +13,7 @@ class ParkingPlace(models.Model):
     
 
 class Shop(models.Model):
-    _id = models.CharField(primary_key=True)
+    _id = models.CharField(max_length=100, primary_key=True)
     slug = models.CharField(max_length=100) 
     coordinates = ArrayField(ArrayField(models.FloatField()), blank=False)
     category = models.CharField(max_length=100)
@@ -26,11 +26,11 @@ class FacilityType(models.Model):
         ('Escalator', 'Эскалатор'),
         ('Entrance', 'Вход'),
     ]
-    type = models.CharField(max_length=20, choices=TYPE_CHOICES)
+    type = models.CharField(max_length=100, choices=TYPE_CHOICES)
  
     
 class Facility(models.Model):
-    _id = models.CharField(primary_key=True)
+    _id = models.CharField(max_length=100, primary_key=True)
     floor = models.IntegerField(blank=False)
     coordinates = ArrayField(ArrayField(models.FloatField()), blank=False)
     slug = models.CharField(max_length=100) 
