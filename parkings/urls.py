@@ -1,7 +1,5 @@
 from rest_framework import routers
 from .api import *
-from django.urls import path, include
-from .filters import ParkingPlaceFilter
 
 
 router = routers.DefaultRouter()
