@@ -22,7 +22,7 @@ def shop():
         service._id = item['_id']
         service.slug = item['slug']
         service.coordinates = item['coordinates']
-        service.category = item['category', 'default_category']
+        service.category = item.get('category', 'default_category')
         service.floor = item['floor']
         service.save()
 
