@@ -40,9 +40,18 @@ class ParkingPlaceView(APIView):
     
 
 class ShopView(APIView):
-    @method_decorator(api_view(['GET']))
-    def get(self):
-        shops = Shop.objects.all()
+    def get(self, request):
+        floor = request.GET.get('floor')
+        if floor:
+            try:
+                floor = int(floor)
+                shops = Shop.objects.filter(floor=floor)
+                if not shops:
+                    return Response({'error': 'No parking spaces found on this floor'}, status=404)
+            except ValueError:
+                return Response({'error': 'Invalid floor value'}, status=400)
+        else:
+            shops = Shop.objects.all()
         serializer = ShopSerializer(shops, many=True)
         return Response(serializer.data)
     
@@ -57,9 +66,18 @@ class ShopView(APIView):
     
 
 class FacilityView(APIView):
-    @method_decorator(api_view(['GET']))
-    def get(self):
-        facilities = Facility.objects.all()
+    def get(self, request):
+        floor = request.GET.get('floor')
+        if floor:
+            try:
+                floor = int(floor)
+                facilities = Facility.objects.filter(floor=floor)
+                if not facilities:
+                    return Response({'error': 'No parking spaces found on this floor'}, status=404)
+            except ValueError:
+                return Response({'error': 'Invalid floor value'}, status=400)
+        else:
+            facilities = Facility.objects.all()
         serializer = FacilitySerializer(facilities, many=True)
         return Response(serializer.data)
     
@@ -73,8 +91,7 @@ class FacilityView(APIView):
         return JsonResponse(facility_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class BusyView(APIView):    
-    @method_decorator(api_view(['GET']))
+class BusyView(APIView):
     def get(self):
         busy = Busy.objects.all()
         serializer = BusySerializer(busy, many=True)
@@ -102,7 +119,6 @@ class BusyView(APIView):
 
 
 class PathView(APIView):
-    @method_decorator(api_view(['GET']))
     def get(self, request):
         path = Path.objects.all()
         serializer = PathSerializer(path, many=True)
@@ -116,14 +132,3 @@ class PathView(APIView):
             path_serializer.save()
             return JsonResponse(path_serializer.data, status=status.HTTP_201_CREATED) 
         return JsonResponse(path_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-# def home(request):
-#     places = ParkingPlace.objects.all()
-#     # places_id = list()
-    
-#     # for place in places:
-#     #     places_id.append(str(place.id))
-        
-#     # response_html = '<br>'.join(places_id)
-#     return render(request, 'home.html', {'places': places}) 
