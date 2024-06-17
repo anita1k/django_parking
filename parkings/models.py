@@ -8,7 +8,7 @@ class ParkingPlace(models.Model):
     coordinates = ArrayField(ArrayField(models.FloatField()), blank=False)
     floor = models.IntegerField(blank=False)
     
-    def __int__(self):
+    def __str__(self):
         return self._id
     
 
@@ -49,12 +49,5 @@ class Path(models.Model):
     place_id = models.ForeignKey(ParkingPlace, related_name='path_set', on_delete=models.CASCADE, blank=False)
     shop_id = models.ForeignKey(Shop, related_name='path_set', on_delete=models.CASCADE, blank=False)
     # user_for = models.ForeignKey(User, null=True, related_name='+', on_delete=models.CASCADE)
-    # path_coordinates = ArrayField(ArrayField(models.FloatField()), size=None)
-    # path_coordinates = models.JSONField(default=list)
     path_coordinates = ArrayField(ArrayField(models.DecimalField(max_digits=10, decimal_places=2)))
     
-    
-
-    
-    
-# coords = ArrayField(base_field=models.FloatField(), size=2, blank=False)
