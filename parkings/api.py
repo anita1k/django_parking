@@ -26,12 +26,32 @@ class ShopViewSet(viewsets.ModelViewSet):
     queryset = Shop.objects.all()
     permission_classes = [permissions.AllowAny]
     serializer_class = ShopSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['floor']
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        floor = self.request.query_params.get('floor')
+        if floor is not None:
+            floor = int(floor)
+            queryset = queryset.filter(floor=floor)
+        return queryset
     
     
 class FacilityViewSet(viewsets.ModelViewSet):
     queryset = Facility.objects.all()
     permission_classes = [permissions.AllowAny]
     serializer_class = FacilitySerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['floor']
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        floor = self.request.query_params.get('floor')
+        if floor is not None:
+            floor = int(floor)
+            queryset = queryset.filter(floor=floor)
+        return queryset
 
     
 class BusyViewSet(viewsets.ModelViewSet):
