@@ -1,7 +1,7 @@
 import json
 from .models import ParkingPlace
 
-def handle():
+def parkingplace():
     with open('data/test.parkingplaces.json') as f:
         data = json.load(f)
 
@@ -13,6 +13,35 @@ def handle():
         service.save()
 
 
+def shop():
+    with open('data/test.shops.json') as f:
+        data = json.load(f)
+
+    for item in data:
+        service = Shop()
+        service._id = item['_id']
+        service.slug = item['slug']
+        service.coordinates = item['coordinates']
+        service.category = item['category']
+        service.floor = item['floor']
+        service.save()
+
+
+def facility():
+    with open('data/test.facilities.json') as f:
+        data = json.load(f)
+
+    for item in data:
+        service = Facility()
+        service._id = item['_id']
+        service.floor = item['floor']
+        service.coordinates = item['coordinates']
+        service.slug = item['slug']
+        service.type = item['type']
+        service.save()
+
 
 if __name__ == '__main__':
-    handle()
+    parkingplace()
+    shop()
+    facility()
