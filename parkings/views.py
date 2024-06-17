@@ -14,9 +14,18 @@ from django.http.response import JsonResponse
 
 
 class ParkingPlaceView(APIView):
-    @method_decorator(api_view(['GET']))
-    def get(self):
-        parkings = ParkingPlace.objects.all()
+    def get(self, request):
+        floor = request.GET.get('floor')
+        if floor:
+            try:
+                floor = int(floor)
+                parkings = ParkingPlace.objects.filter(floor=floor)
+                if not parkings:
+                    return Response({'error': 'No parking spaces found on this floor'}, status=404)
+            except ValueError:
+                return Response({'error': 'Invalid floor value'}, status=400)
+        else:
+            parkings = ParkingPlace.objects.all()
         serializer = ParkingPlaceSerializer(parkings, many=True)
         return Response(serializer.data)
     
