@@ -1,5 +1,5 @@
 import json
-from .models import ParkingPlace
+from .models import ParkingPlace, Shop, Facility
 
 def parkingplace():
     with open('data/test.parkingplaces.json') as f:
