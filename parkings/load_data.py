@@ -7,9 +7,9 @@ def parkingplace():
 
     for item in data:
         service = ParkingPlace()
-        service._id = item.get('_id')
-        service.coordinates = item.get('coordinates')
-        service.floor = item.get('floor')
+        service._id = item['_id']
+        service.coordinates = item['coordinates']
+        service.floor = item['floor']
         service.save()
 
 
@@ -20,7 +20,7 @@ def shop():
     for item in data:
         service = Shop()
         service._id = item['_id']
-        service.slug = item['slug']
+        service.slug = item.get('slug', 'default_slug')
         service.coordinates = item['coordinates']
         service.category = item.get('category', 'default_category')
         service.floor = item['floor']
@@ -36,7 +36,7 @@ def facility():
         service._id = item['_id']
         service.floor = item['floor']
         service.coordinates = item['coordinates']
-        service.slug = item['slug']
+        service.slug = item.get('slug', 'default_slug')
         service.type = item['type']
         service.save()
 
