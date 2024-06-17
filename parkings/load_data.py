@@ -2,7 +2,7 @@ import json
 from .models import ParkingPlace
 
 def handle():
-    with open('/Users/anitakovalenko/Development/cw_parking/parkingmanager/parkings/scripts/test.parkingplaces.json') as f:
+    with open('data/test.parkingplaces.json') as f:
         data = json.load(f)
 
     for item in data:
