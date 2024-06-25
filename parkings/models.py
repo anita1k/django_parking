@@ -49,5 +49,5 @@ class Path(models.Model):
     place_id = models.ForeignKey(ParkingPlace, related_name='path_set', on_delete=models.CASCADE, blank=False)
     shop_id = models.ForeignKey(Shop, related_name='path_set', on_delete=models.CASCADE, blank=False)
     # user_for = models.ForeignKey(User, null=True, related_name='+', on_delete=models.CASCADE)
-    path_coordinates = ArrayField(ArrayField(models.DecimalField(max_digits=10, decimal_places=2)))
+    path_coordinates = ArrayField(ArrayField(models.FloatField()))
     
