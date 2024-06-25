@@ -41,7 +41,7 @@ class Facility(models.Model):
 class Busy(models.Model):
     _id = models.ForeignKey(ParkingPlace, related_name='busy_set', on_delete=models.CASCADE, primary_key=True)
     is_busy = models.BooleanField()
-    # created_at = models.DateTimeField(auto_now_add=True)
+    # created_at = models.DateTimeField(auto_now_add=True))
     
 
 class Path(models.Model):
